@@ -6,7 +6,7 @@
  ***************************************************************************/
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <sys/mman.h>
+// #include <sys/mman.h>
 #include <unistd.h>
 #include <assert.h>
 #include <time.h>
@@ -15,6 +15,7 @@
 #include <mimetic/libconfig.h>
 #include <mimetic/os/mmfile.h>
 #include <cstring>
+#include "mimetic/platform_support/cross_mmap.h"
 
 using namespace std;
 
@@ -56,7 +57,7 @@ bool MMFile::open(int mode)
 
 bool MMFile::map()
 {
-    m_beg = (char*) mmap(0, m_st.st_size, PROT_READ, MAP_SHARED,m_fd,0);
+    m_beg = (char*) cross_mmap(0, m_st.st_size, PROT_READ, MAP_SHARED,m_fd,0);
     if(m_beg != MAP_FAILED)
     {
         m_end = m_beg + m_st.st_size;
@@ -71,7 +72,7 @@ bool MMFile::map()
 MMFile::~MMFile()
 {
     if(m_beg)
-        munmap(m_beg, m_st.st_size);
+        cross_munmap(m_beg, m_st.st_size);
     if(m_fd)
         close();
 }
