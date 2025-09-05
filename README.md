@@ -1,3 +1,9 @@
+# Fork of original "mimetic" library by Stefano Barbato
+Goal: Add modern CMake build as alternative and restore Windows support.
+
+License information: This version is based on mimetic v0.9.8.
+---
+
 mimetic
 =======
 
