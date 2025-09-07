@@ -1,8 +1,8 @@
 # Level: ./tests
 
-add_executable(cutee
-    ${CMAKE_CURRENT_SOURCE_DIR}/cutee.cxx
-)
+# add_executable(cutee
+#     ${CMAKE_CURRENT_SOURCE_DIR}/cutee.cxx
+# )
 
 add_executable(test1)
 target_sources(test1 PUBLIC
