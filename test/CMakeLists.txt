@@ -6,9 +6,8 @@ add_executable(cutee
 
 add_executable(test1)
 target_sources(test1 PUBLIC
-    # ${CMAKE_CURRENT_SOURCE_DIR}/cutee.cxx
     ${CMAKE_CURRENT_SOURCE_DIR}/runtest.cxx
-    # ${CMAKE_CURRENT_SOURCE_DIR}/t.base64.cxx
+    ${CMAKE_CURRENT_SOURCE_DIR}/t.base64.cxx
     ${CMAKE_CURRENT_SOURCE_DIR}/t.codec.cxx
 )
 
