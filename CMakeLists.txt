@@ -8,5 +8,10 @@ project(mimetic
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+option(BUILD_TESTS "Optionally build tests" ON)
 
 add_subdirectory(mimetic)
+
+if (BUILD_TESTS)
+    add_subdirectory(test)
+endif()
