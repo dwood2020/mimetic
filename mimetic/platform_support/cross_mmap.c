@@ -62,12 +62,12 @@ int cross_munmap(void* addr, size_t length) {
 
 #else // POSIX passthrough
 
-void* cross_mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset) {
-    return ::mmap(addr, length, prot, flags, fd, offset);   // TODO: leading :: are no C, fix when on platform!
+void* cross_mmap(void* addr, size_t length, int prot, int flags, int fd, size_t offset) {
+    return mmap(addr, length, prot, flags, fd, offset);
 }
 
 int cross_munmap(void* addr, size_t length) {
-    return ::munmap(addr, length);
+    return munmap(addr, length);
 }
 
 #endif
