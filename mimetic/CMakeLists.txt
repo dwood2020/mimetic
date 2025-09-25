@@ -63,7 +63,7 @@ endif()
 
 
 target_include_directories(${MIMETIC_LIB_TARGET} PUBLIC
-    "${CMAKE_SOURCE_DIR}"
+    "${CMAKE_CURRENT_LIST_DIR}/.."
 )
 
 add_library(mimetic::mimetic ALIAS ${MIMETIC_LIB_TARGET})
