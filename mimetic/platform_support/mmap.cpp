@@ -1,9 +1,19 @@
-#include "mimetic/platform_support/cross_mmap.h"
-
+#include "mimetic/platform_support/mmap.h"
 
 #if defined(_WIN32) || defined(WIN32)
+#include <windows.h>
+#include <io.h>
+#else
+extern "C" {
+#include <sys/mman.h>
+#include <unistd.h>
+#include <fcntl.h>
+}
+#endif
 
-void* cross_mmap(void* addr, size_t length, int prot, int flags, int fd, size_t offset) {
+
+void* platform_support::mmap(void* addr, size_t length, int prot, int flags, int fd, size_t offset) {
+#if defined(_WIN32) || defined(WIN32)
     DWORD flProtect = 0;
     DWORD dwAccess  = 0;
 
@@ -51,23 +61,19 @@ void* cross_mmap(void* addr, size_t length, int prot, int flags, int fd, size_t 
     );
 
     CloseHandle(hMap);
-
     return (map == NULL) ? MAP_FAILED : map;
-}
-
-int cross_munmap(void* addr, size_t length) {
-    (void)length; // Windows does not need length to unmap
-    return UnmapViewOfFile(addr) ? 0 : -1;
-}
 
 #else // POSIX passthrough
-
-void* cross_mmap(void* addr, size_t length, int prot, int flags, int fd, size_t offset) {
-    return mmap(addr, length, prot, flags, fd, offset);
-}
-
-int cross_munmap(void* addr, size_t length) {
-    return munmap(addr, length);
-}
-
+    return ::mmap(addr, length, prot, flags, fd, offset);
 #endif
+}
+
+
+int platform_support::munmap(void* addr, size_t length) {
+#if defined(_WIN32) || defined(WIN32)
+    (void) length; // Windows does not need length to unmap
+    return UnmapViewOfFile(addr) ? 0 : -1;
+#else // POSIX fallthrough
+    return ::munmap(addr, length);
+#endif 
+}

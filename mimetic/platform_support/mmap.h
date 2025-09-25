@@ -1,5 +1,5 @@
-#ifndef CROSS_MMAP_H
-#define CROSS_MMAP_H
+#ifndef MIMETIC_PLATFORM_SUPPORT_MMAP
+#define MIMETIC_PLATFORM_SUPPORT_MMAP
 
 // Define POSIX mmap flags for compatibility
 #ifndef PROT_READ
@@ -30,26 +30,13 @@
 #define MAP_FAILED ((void*)-1)
 #endif
 
-#include <stddef.h>
+#include <stddef.h> // size_t
 
-#ifdef _WIN32
-#include <windows.h>
-#include <io.h>
-#else
-#include <sys/mman.h>
-#include <unistd.h>
-#include <fcntl.h>
-#endif
+namespace platform_support {
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void* cross_mmap(void* addr, size_t length, int prot, int flags, int fd, size_t offset);
-int   cross_munmap(void* addr, size_t length);
-
-#ifdef __cplusplus
+    void* mmap(void* addr, size_t length, int prot, int flags, int fd, size_t offset);
+    int   munmap(void* addr, size_t length);
 }
-#endif
 
-#endif /* CROSS_MMAP_H */
+
+#endif /* MIMETIC_PLATFORM_SUPPORT_MMAP */

@@ -46,7 +46,7 @@ target_sources(${MIMETIC_LIB_TARGET} PRIVATE
     "${MIMETIC_SRC}/rfc822/messageid.cxx"
 
     # custom
-    "${MIMETIC_SRC}/platform_support/cross_mmap.c"
+    "${MIMETIC_SRC}/platform_support/mmap.cpp"
 )
 
 
