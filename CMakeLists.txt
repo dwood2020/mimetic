@@ -8,7 +8,11 @@ project(mimetic
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-option(BUILD_TESTS "Optionally build tests" ON)
+option(BUILD_TESTS "Optionally build tests" OFF)
+
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+include(ConfigureHeader)
 
 add_subdirectory(mimetic)
 
