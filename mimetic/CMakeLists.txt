@@ -4,7 +4,7 @@
 set(MIMETIC_LIB_TARGET ${CMAKE_PROJECT_NAME})
 add_library(${MIMETIC_LIB_TARGET} STATIC)
 
-set(MIMETIC_SRC ${CMAKE_SOURCE_DIR}/mimetic)
+set(MIMETIC_SRC ${CMAKE_CURRENT_LIST_DIR})
 target_sources(${MIMETIC_LIB_TARGET} PRIVATE
     "${MIMETIC_SRC}/body.cxx"
     "${MIMETIC_SRC}/contentdescription.cxx"
