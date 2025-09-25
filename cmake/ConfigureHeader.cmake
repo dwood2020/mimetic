@@ -12,6 +12,8 @@ check_include_file("strings.h" HAVE_STRINGS_H)
 check_include_file("string.h" HAVE_STRING_H)
 check_include_file("sys/dir.h" HAVE_SYS_DIR_H)
 check_include_file("sys/ndir.h" HAVE_SYS_NDIR_H)
+check_include_file("sys/stat.h" HAVE_SYS_STAT_H)
+check_include_file("sys/time.h" HAVE_SYS_TIME_H)
 
 
 configure_file(${CMAKE_CURRENT_LIST_DIR}/mimetic/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/mimetic/config.h)
