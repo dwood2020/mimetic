@@ -1,4 +1,5 @@
 # Level: ./mimetic
+# Exposes alias library target `mimetic::mimetic`
 
 set(MIMETIC_LIB_TARGET ${CMAKE_PROJECT_NAME})
 add_library(${MIMETIC_LIB_TARGET} STATIC)
@@ -48,11 +49,12 @@ target_sources(${MIMETIC_LIB_TARGET} PRIVATE
     "${MIMETIC_SRC}/platform_support/cross_mmap.c"
 )
 
+
+set(MIMETIC_VERSION "0.9.8")
 # TODO: This would need to go into the BINARY_DIR
-# set(MIMETIC_VERSION "0.9.8")
 # configure_file(${CMAKE_SOURCE_DIR}/ext/cmake/mimetic/config.h.in ${MIMETIC_ROOT}/mimetic/config.h)
 if (UNIX OR APPLE)
-    target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC VERSION="0.9.8")
+    target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC "VERSION=${MIMETIC_VERSION}")
     target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC HAVE_UNISTD_H=1)
     target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC HAVE_SYS_TYPES_H=1)
     target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC HAVE_SYS_STAT_H=1)
