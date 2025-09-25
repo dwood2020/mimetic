@@ -54,7 +54,7 @@ set(MIMETIC_VERSION "0.9.8")
 # TODO: This would need to go into the BINARY_DIR
 # configure_file(${CMAKE_SOURCE_DIR}/ext/cmake/mimetic/config.h.in ${MIMETIC_ROOT}/mimetic/config.h)
 if (UNIX OR APPLE)
-    target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC "VERSION=${MIMETIC_VERSION}")
+    target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC "VERSION=\"${MIMETIC_VERSION}\"")
     target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC HAVE_UNISTD_H=1)
     target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC HAVE_SYS_TYPES_H=1)
     target_compile_definitions(${MIMETIC_LIB_TARGET} PUBLIC HAVE_SYS_STAT_H=1)
