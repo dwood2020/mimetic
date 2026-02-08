@@ -1,7 +1,7 @@
 # Level: ./mimetic
 # Exposes alias library target `mimetic::mimetic`
 
-set(MIMETIC_LIB_TARGET ${CMAKE_PROJECT_NAME})
+set(MIMETIC_LIB_TARGET mimetic)
 add_library(${MIMETIC_LIB_TARGET} STATIC)
 
 set(MIMETIC_SRC ${CMAKE_CURRENT_LIST_DIR})
